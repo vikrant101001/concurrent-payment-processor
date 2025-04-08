@@ -1,26 +1,27 @@
-# 💸 Concurrent Payment Processor
+# Concurrent Payment Processor
 
-> ⚙️ A multithreaded microservice built with **Java Spring Boot** that simulates a real-world payment processing system using custom thread pools, asynchronous execution, retry logic, and a fake database — all while being lightning-fast, scalable, and resilient.
+>  A multithreaded microservice built with **Java Spring Boot** that simulates a real-world payment processing system using custom thread pools, asynchronous execution, retry logic, and a fake database — all while being lightning-fast, scalable, and resilient.
 
 ---
 
 ## 📚 Table of Contents
 
-- [🚀 Project Summary](#-project-summary)
-- [🧠 Core Concepts Implemented](#-core-concepts-implemented)
-- [🎯 Functional Highlights](#-functional-highlights)
-- [📦 Tech Stack](#-tech-stack)
-- [🌐 Sample Flow](#-sample-flow)
-- [🎯 Use Cases & Why This Matters](#-use-cases--why-this-matters)
-- [🤩 What Makes This Project Special?](#-what-makes-this-project-special)
-- [📂 Project Structure](#-project-structure)
-- [💼 For Resume / Portfolio](#-for-resume--portfolio)
-- [🛠️ Future Enhancements](#️-future-enhancements)
-- [🧑‍💻 Author](#-author)
+- [ Project Summary](#-project-summary)
+- [ Architectural Diagram](#-architectural-diagram)
+- [ Core Concepts Implemented](#-core-concepts-implemented)
+- [ Functional Highlights](#-functional-highlights)
+- [ Tech Stack](#-tech-stack)
+- [ Sample Flow](#-sample-flow)
+- [ Use Cases & Why This Matters](#-use-cases--why-this-matters)
+- [ What Makes This Project Special?](#-what-makes-this-project-special)
+- [ Project Structure](#-project-structure)
+- [ For Resume / Portfolio](#-for-resume--portfolio)
+- [ Future Enhancements](#️-future-enhancements)
+- [ Author](#-author)
 
 ---
 
-## 🚀 Project Summary
+##  Project Summary
 
 `Concurrent Payment Processor` is an enterprise-grade simulation of how modern fintech applications handle high-throughput payment processing. Built with concurrency and microservice principles in mind, it demonstrates key concepts like **multithreading**, **custom thread pools**, **failure handling with retry mechanisms**, and a live **in-memory dashboard** to track each transaction's journey in real-time.
 
@@ -28,7 +29,12 @@ Designed to showcase strong Java backend development skills with clean code, sol
 
 ---
 
-## 🧠 Core Concepts Implemented
+## Architectural Diagram
+![Logo](./src/images/architectural_diagram_1.png)
+
+
+
+##  Core Concepts Implemented
 
 -   ✅ **Custom ThreadPool:** Configuration using `ThreadPoolTaskExecutor`.
 -   ✅ **Asynchronous Execution:** Leveraging Spring's `@Async` annotation for non-blocking operations.
@@ -41,7 +47,7 @@ Designed to showcase strong Java backend development skills with clean code, sol
 
 ---
 
-## 🎯 Functional Highlights
+##  Functional Highlights
 
 | Feature                  | Description                                                                 |
 | :----------------------- | :-------------------------------------------------------------------------- |
@@ -55,19 +61,19 @@ Designed to showcase strong Java backend development skills with clean code, sol
 
 ---
 
-## 📦 Tech Stack
+##  Tech Stack
 
--   🧠 **Java 17:** Core programming language.
--   ☕ **Spring Boot 3:** Framework for building robust applications quickly.
--   🔄 **Spring Async + Executor:** For managing asynchronous tasks and thread pools.
--   🗃️ **ConcurrentHashMap:** Simple, thread-safe in-memory data store simulation.
--   ⏱️ **Spring Scheduler:** (Optional) Can be used for scheduled tasks like retry mechanisms.
--   🧪 **JUnit + Mockito:** For comprehensive unit and integration testing.
--   🚢 **Deployment:** Can be run locally, containerized with Docker, or deployed to platforms like Render.
+-    **Java 17:** Core programming language.
+-    **Spring Boot 3:** Framework for building robust applications quickly.
+-    **Spring Async + Executor:** For managing asynchronous tasks and thread pools.
+-    **ConcurrentHashMap:** Simple, thread-safe in-memory data store simulation.
+-    **Spring Scheduler:** (Optional) Can be used for scheduled tasks like retry mechanisms.
+-    **JUnit + Mockito:** For comprehensive unit and integration testing.
+-    **Deployment:** Can be run locally, containerized with Docker, or deployed to platforms like Render.
 
 ---
 
-## 🌐 Sample Flow
+##  Sample Flow
 
 1.  User sends a `POST` request to `/api/payment/process` with a list of payment IDs.
 2.  Each payment task is submitted to the custom `ThreadPoolTaskExecutor`.
@@ -77,14 +83,14 @@ Designed to showcase strong Java backend development skills with clean code, sol
 6.  Failed payments are marked as `FAILED`. *Retry logic can be triggered here.*
 7.  User sends a `GET` request to `/api/payment/all` to view the status and timestamps of all payments.
 
-### 🔁 Retry Mechanism (Coming Soon)
+###  Retry Mechanism (Coming Soon)
 
 We plan to enhance the retry logic with:
 
 -   Configurable number of retry attempts.
 -   Strategies like exponential backoff between retries using libraries like `Spring Retry`.
 
-### 📊 Real-Time Dashboard (Coming Soon)
+###  Real-Time Dashboard (Coming Soon)
 
 A simple frontend (e.g., using Thymeleaf or a separate ReactJS app) to:
 
@@ -93,7 +99,7 @@ A simple frontend (e.g., using Thymeleaf or a separate ReactJS app) to:
 
 ---
 
-## 🎯 Use Cases & Why This Matters
+##  Use Cases & Why This Matters
 
 -   ✅ **Fintech Simulations:** Understand the core mechanics of high-volume transaction systems.
 -   ✅ **Scalable Backend Systems:** Learn practical techniques for handling numerous asynchronous requests efficiently.
@@ -102,7 +108,7 @@ A simple frontend (e.g., using Thymeleaf or a separate ReactJS app) to:
 
 ---
 
-## 🤩 What Makes This Project Special?
+##  What Makes This Project Special?
 
 > "Most payment demos just hit one API and stop. We went deeper: custom thread pools, failure simulation, retries, a concurrent fake DB, and observability hooks — simulating key aspects of a real-world system minus the actual bank integration."
 
@@ -114,7 +120,7 @@ A simple frontend (e.g., using Thymeleaf or a separate ReactJS app) to:
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```bash
 concurrent-payment-processor/
@@ -134,10 +140,10 @@ concurrent-payment-processor/
 └── README.md                       # This file
 
 ```
-# 🛠️ Future Enhancements
+#  Future Enhancements
 ```bash
 [ ] Integrate Spring Retry for robust, configurable retry logic with exponential backoff.
-[ ] Introduce a Message Queue (e.g., Kafka, RabbitMQ) to decouple request ingestion from processing.
+[ ] Introduce a Message Queue - Kafka to decouple request ingestion from processing.
 [ ] Replace ConcurrentHashMap with a persistent store like Redis (for caching/state) or a relational DB (H2, PostgreSQL).
 [ ] Develop a simple UI Dashboard (e.g., React + Chart.js or Thymeleaf) for real-time monitoring.
 [ ] Add Monitoring using Spring Boot Actuator, Prometheus, and Grafana.
